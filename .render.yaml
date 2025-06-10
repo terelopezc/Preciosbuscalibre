@@ -1,0 +1,7 @@
+services:
+  - type: web
+    name: buscalibre-scraper
+    env: node
+    buildCommand: rm -rf bun.lockb && npm install
+    startCommand: npm start
+    nodeVersion: "20.11.1"
