@@ -50,8 +50,9 @@ async function obtenerPrecioDesdeBuscalibre(url, browser) {
   try {
     const page = await browser.newPage();
     await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 20000 });
-
+    await page.screenshot({ path: `screenshot-${Date.now()}.png` });
     await page.waitForSelector('span.ped, span.price', { timeout: 10000 });
+
 
     const precio = await page.$eval('span.ped, span.price', el =>
       el.innerText.replace(/[^\d]/g, '')
